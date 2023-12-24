@@ -1,7 +1,8 @@
 import { WebPlugin } from '@capacitor/core';
+
 import type { FacebookEventsPlugin } from './definitions';
 
-declare var FB: any;
+declare let FB: any;
 
 export class FacebookEventsWeb extends WebPlugin implements FacebookEventsPlugin {
 
