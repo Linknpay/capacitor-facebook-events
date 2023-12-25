@@ -22,7 +22,7 @@ public class FacebookEventsPlugin: CAPPlugin {
         }
 
         let params = call.getObject("params") ?? [:]
-        facebookEvents.logEvent(event: event, params: params)
+        facebookEvents.logEvent(event: event, params: params as NSDictionary)
         call.resolve()
     }
 }
