@@ -5,7 +5,7 @@ Facebook events tracking in Capacitor applications
 ## Install
 
 ```bash
-npm install capacitor-facebook-events
+npm i --save capacitor-facebook-events
 npx cap sync
 ```
 

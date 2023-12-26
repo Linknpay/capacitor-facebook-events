@@ -1,11 +1,9 @@
 package com.dabchy.plugins.facebookevents;
 
+import android.os.Bundle;
 import com.facebook.appevents.AppEventsLogger;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
-
-import android.os.Bundle;
-
 import java.util.Iterator;
 
 public class FacebookEvents {
@@ -19,7 +17,7 @@ public class FacebookEvents {
     public void logEvent(String event, JSObject params) {
         if (params != null && params.length() > 0) {
             Bundle parameters = new Bundle();
-            for (Iterator<String> it = params.keys(); it.hasNext(); ) {
+            for (Iterator<String> it = params.keys(); it.hasNext();) {
                 String key = it.next();
                 parameters.putString(key, params.getString(key));
             }
