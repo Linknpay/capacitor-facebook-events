@@ -15,6 +15,11 @@ public class FacebookEvents {
     }
 
     public void logEvent(String event, JSObject params) {
+        if (logger == null) {
+            // Logger not initialized, handle this scenario appropriately
+            return;
+        }
+
         if (params != null && params.length() > 0) {
             Bundle parameters = new Bundle();
             for (Iterator<String> it = params.keys(); it.hasNext();) {

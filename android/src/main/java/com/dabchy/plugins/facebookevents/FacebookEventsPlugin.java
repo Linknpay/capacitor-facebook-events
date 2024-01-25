@@ -9,7 +9,12 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "FacebookEvents")
 public class FacebookEventsPlugin extends Plugin {
 
-    private final FacebookEvents facebookEvents = new FacebookEvents(this);
+    private FacebookEvents facebookEvents;
+
+    @Override
+    public void load() {
+        facebookEvents = new FacebookEvents(this);
+    }
 
     @PluginMethod
     public void setAdvertiserTrackingEnabled(PluginCall call) {

@@ -1,6 +1,6 @@
 {
   "name": "capacitor-facebook-events",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Facebook events tracking in Capacitor applications",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
