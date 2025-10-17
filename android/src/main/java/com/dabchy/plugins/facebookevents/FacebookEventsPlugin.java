@@ -43,11 +43,6 @@ public class FacebookEventsPlugin extends Plugin {
     @Override
     protected void handleOnStop() {
         super.handleOnStop();
-        Application application = resolveApplication();
-
-        if (application != null) {
-            AppEventsLogger.deactivateApp(application);
-        }
     }
 
     @Override
