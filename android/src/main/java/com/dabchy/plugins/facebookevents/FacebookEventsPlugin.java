@@ -16,6 +16,12 @@ public class FacebookEventsPlugin extends Plugin {
         facebookEvents = new FacebookEvents(this);
     }
 
+    @Override
+    protected void handleOnStart() {
+        super.handleOnStart();
+        AppEventsLogger.activateApp(getActivity().getApplication());
+    }
+
     @PluginMethod
     public void setAdvertiserTrackingEnabled(PluginCall call) {
         call.resolve();
