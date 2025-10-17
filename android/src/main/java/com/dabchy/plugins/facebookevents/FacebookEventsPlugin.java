@@ -19,7 +19,6 @@ public class FacebookEventsPlugin extends Plugin {
     @Override
     protected void handleOnStart() {
         super.handleOnStart();
-        AppEventsLogger.activateApp(getActivity().getApplication());
     }
 
     @PluginMethod
