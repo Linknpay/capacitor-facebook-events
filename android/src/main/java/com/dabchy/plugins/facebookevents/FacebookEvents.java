@@ -34,9 +34,19 @@ public class FacebookEvents {
             Bundle parameters = new Bundle();
             for (Iterator<String> it = params.keys(); it.hasNext(); ) {
                 String key = it.next();
-                String value = params.getString(key);
-                if (value != null) {
-                    parameters.putString(key, value);
+                Object value = params.opt(key);
+                if (value == null) {
+                    continue;
+                }
+
+                if (value instanceof Number) {
+                    parameters.putDouble(key, ((Number) value).doubleValue());
+                } else if (value instanceof Boolean) {
+                    parameters.putBoolean(key, (Boolean) value);
+                } else if (value instanceof String) {
+                    parameters.putString(key, (String) value);
+                } else {
+                    parameters.putString(key, value.toString());
                 }
             }
             logger.logEvent(event, parameters);
