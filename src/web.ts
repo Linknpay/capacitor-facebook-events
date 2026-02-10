@@ -4,10 +4,7 @@ import type { FacebookEventsPlugin } from './definitions';
 
 declare let FB: any;
 
-export class FacebookEventsWeb
-  extends WebPlugin
-  implements FacebookEventsPlugin
-{
+export class FacebookEventsWeb extends WebPlugin implements FacebookEventsPlugin {
   constructor() {
     super();
     this.loadFBSDK();
@@ -26,11 +23,7 @@ export class FacebookEventsWeb
     })(document, 'script', 'facebook-jssdk');
   }
 
-  async setAdvertiserTrackingEnabled({
-    enabled,
-  }: {
-    enabled: boolean;
-  }): Promise<void> {
+  async setAdvertiserTrackingEnabled({ enabled }: { enabled: boolean }): Promise<void> {
     console.warn(
       `setAdvertiserTrackingEnabled called with enabled: ${enabled}. Note: This is not applicable on the web platform.`,
     );

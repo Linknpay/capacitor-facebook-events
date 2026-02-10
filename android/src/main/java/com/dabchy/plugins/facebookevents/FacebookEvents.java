@@ -32,7 +32,7 @@ public class FacebookEvents {
 
         if (params != null && params.length() > 0) {
             Bundle parameters = new Bundle();
-            for (Iterator<String> it = params.keys(); it.hasNext();) {
+            for (Iterator<String> it = params.keys(); it.hasNext(); ) {
                 String key = it.next();
                 String value = params.getString(key);
                 if (value != null) {
