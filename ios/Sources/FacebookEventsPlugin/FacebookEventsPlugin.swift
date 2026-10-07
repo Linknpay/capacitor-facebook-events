@@ -2,8 +2,15 @@ import Foundation
 import Capacitor
 
 @objc(FacebookEventsPlugin)
-public class FacebookEventsPlugin: CAPPlugin {
-    private let facebookEvents = FacebookEvents()
+public class FacebookEventsPlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "FacebookEventsPlugin"
+    public let jsName = "FacebookEvents"
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "setAdvertiserTrackingEnabled", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "logEvent", returnType: CAPPluginReturnPromise)
+    ]
+
+    private let implementation = FacebookEvents()
 
     @objc func setAdvertiserTrackingEnabled(_ call: CAPPluginCall) {
         guard let enabled = call.getBool("enabled") else {
@@ -11,7 +18,7 @@ public class FacebookEventsPlugin: CAPPlugin {
             return
         }
 
-        facebookEvents.setAdvertiserTrackingEnabled(enabled: enabled)
+        implementation.setAdvertiserTrackingEnabled(enabled: enabled)
         call.resolve()
     }
 
@@ -22,7 +29,7 @@ public class FacebookEventsPlugin: CAPPlugin {
         }
 
         let params = call.getObject("params") ?? [:]
-        facebookEvents.logEvent(event: event, params: params as NSDictionary)
+        implementation.logEvent(event: event, params: params)
         call.resolve()
     }
 }
