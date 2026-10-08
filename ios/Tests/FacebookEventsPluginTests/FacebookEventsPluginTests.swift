@@ -19,6 +19,17 @@ class FacebookEventsPluginTests: XCTestCase {
         XCTAssertEqual(result[AppEvents.ParameterName("flag")] as? Bool, true)
     }
 
+    func testObjectParametersAreJSONEncoded() {
+        let implementation = FacebookEvents()
+        let result = implementation.convertToFBParameters([
+            "data": ["keyword": "shoes", "page": 2],
+            "ids": ["a", "b"]
+        ])
+
+        XCTAssertEqual(result[AppEvents.ParameterName("data")] as? String, "{\"keyword\":\"shoes\",\"page\":2}")
+        XCTAssertEqual(result[AppEvents.ParameterName("ids")] as? String, "[\"a\",\"b\"]")
+    }
+
     func testNullParametersAreSkipped() {
         let implementation = FacebookEvents()
         let result = implementation.convertToFBParameters(["empty": NSNull()])
