@@ -9,6 +9,9 @@ npm i --save capacitor-facebook-events
 npx cap sync
 ```
 
+Requires Capacitor 8 or newer. On iOS the plugin ships both a `Package.swift` and a podspec, so it works with
+Swift Package Manager (the Capacitor 8 default) as well as CocoaPods.
+
 ## Quick setup
 
 1) Install via npm
@@ -62,7 +65,10 @@ npx cap sync
 </manifest>
 ```
 
-5) Add or update your `ios/App/App/AppDelegate.swift` with the following (as is, don't replace anything):
+5) Add or update your `ios/App/App/AppDelegate.swift` with the following (as is, don't replace anything).
+If your app uses Swift Package Manager and Xcode cannot resolve `import FBSDKCoreKit`, add
+`https://github.com/facebook/facebook-ios-sdk` (product `FacebookCore`, "Up to Next Major Version" from 18.0.0) to the
+App target's package dependencies.
 
 ```swift
 import FBSDKCoreKit
